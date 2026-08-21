@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Piecitos Centro Podológico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); }
+        .modal { display: none; }
+        .modal.active { display: flex; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="w-full max-w-sm bg-white rounded-[2rem] shadow-[0_20px_50px_rgba(14,165,233,0.15)] overflow-hidden border border-sky-100 relative">
+        
+        <div class="w-full h-36 bg-sky-100 relative overflow-hidden">
+            <img src="https://i.postimg.cc/ncbPx6KH/podologia-1.jpg" alt="Podología Banner" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x150/e0f2fe/0284c7?text=Piecitos+Centro+Podol%C3%B3gico'">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+        </div>
+
+        <!-- Botón PWA (Agregar a pantalla de inicio) flotante superior derecho -->
+        <button onclick="openModal('modalPWA')" class="absolute top-4 right-4 text-white hover:text-sky-200 p-2 rounded-full transition bg-black/30 hover:bg-black/50 backdrop-blur-md z-10" title="Instalar Aplicación">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+        </button>
+
+        <div class="p-6 pt-2">
+            <div class="text-center mt-[-4rem] relative z-10">
+                <div class="w-28 h-28 bg-white rounded-full mx-auto shadow-md flex items-center justify-center border-4 border-white overflow-hidden">
+                    <img src="https://i.postimg.cc/xC7s1WKq/Whats-App-Image-2026-08-15-at-3-10-12-PM.jpg" alt="Piecitos Centro Podológico" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-4xl\'>👣</span>';">
+                </div>
+                <h1 class="text-2xl font-bold mt-3 text-sky-900">Piecitos Centro Podológico</h1>
+                <p class="text-sky-700 font-semibold text-sm">Especialistas en Salud Podal</p>
+                <p class="text-slate-600 mt-1 px-4 italic text-xs">"Pon tus pies en manos de Especialistas."</p>
+            </div>
+
+            <div class="flex gap-3 mt-6">
+                <button onclick="window.open('https://wa.me/51941963113?text=Hola,%20quisiera%20agendar%20un%20turno', '_blank')" class="flex-1 py-3 bg-[#0284c7] text-white rounded-2xl font-bold shadow-md shadow-sky-200 hover:bg-sky-700 transition text-sm flex items-center justify-center gap-1">
+                    📅 Agendar turno
+                </button>
+                <button onclick="window.location.href='tel:+51941963113'" class="flex-1 py-3 bg-[#a7f3d0] text-emerald-900 rounded-2xl font-bold border border-emerald-300 hover:bg-[#6ee7b7] transition text-sm flex items-center justify-center gap-1">
+                    📞 Llamar +51 941 963 113
+                </button>
+            </div>
+
+            <div class="grid grid-cols-4 gap-2 mt-4">
+                <button onclick="openModal('modalServicios')" class="p-3 bg-[#e0f2fe] rounded-2xl text-center hover:bg-sky-200 transition flex flex-col items-center border border-sky-200">
+                    <span class="text-lg">📋</span>
+                    <small class="text-[10px] text-sky-900 font-bold mt-1">Servicios</small>
+                </button>
+                <button onclick="window.open('https://wa.me/51941963113?text=Hola,%20quisiera%20consultar%20información', '_blank')" class="p-3 bg-[#d1fae5] rounded-2xl text-center hover:bg-emerald-200 transition flex flex-col items-center border border-emerald-200">
+                    <span class="text-lg">💬</span>
+                    <small class="text-[10px] text-emerald-900 font-bold mt-1">WhatsApp</small>
+                </button>
+                <button onclick="openModal('modalHorario')" class="p-3 bg-[#e0f2fe] rounded-2xl text-center hover:bg-sky-200 transition flex flex-col items-center border border-sky-200">
+                    <span class="text-lg">⏰</span>
+                    <small class="text-[10px] text-sky-900 font-bold mt-1">Horarios</small>
+                </button>
+                <button onclick="openModal('modalUbicacion')" class="p-3 bg-[#e0f2fe] rounded-2xl text-center hover:bg-sky-200 transition flex flex-col items-center border border-sky-200">
+                    <span class="text-lg">📍</span>
+                    <small class="text-[10px] text-sky-900 font-bold mt-1">Ubicación</small>
+                </button>
+                <button onclick="openModal('modalRedes')" class="p-3 bg-[#e0f2fe] rounded-2xl text-center hover:bg-sky-200 transition flex flex-col items-center border border-sky-200">
+                    <span class="text-lg">🌐</span>
+                    <small class="text-[10px] text-sky-900 font-bold mt-1">Redes</small>
+                </button>
+                <button onclick="openModal('modalQR')" class="p-3 bg-[#e0f2fe] rounded-2xl text-center hover:bg-sky-200 transition flex flex-col items-center border border-sky-200">
+                    <span class="text-lg">📱</span>
+                    <small class="text-[10px] text-sky-900 font-bold mt-1">Contacto</small>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalServicios" class="modal fixed inset-0 bg-sky-950/35 backdrop-blur-sm z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-[2rem] p-6 shadow-2xl border border-sky-100 max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-xl font-bold text-sky-900 flex items-center gap-2"><span>📋</span> Nuestros Servicios</h2>
+                <button onclick="closeModal('modalServicios')" class="text-slate-400 hover:text-slate-600 font-bold p-1">✕</button>
+            </div>
+            
+            <div class="space-y-3 overflow-y-auto pr-1 flex-1">
+                <!-- Servicio 1 -->
+                <div class="flex items-center gap-3 p-3 bg-sky-50/50 rounded-2xl border border-sky-100 shadow-sm hover:border-sky-300 transition">
+                    <img src="https://i.postimg.cc/W10psVcH/uneros1.jpg" alt="Uñeros" class="w-14 h-14 rounded-xl object-cover flex-shrink-0 border border-sky-200" onerror="this.src='https://placehold.co/150x150/e0f2fe/0284c7?text=👣'">
+                    <div>
+                        <h3 class="font-bold text-sky-900 text-sm">Onicocriptosis / Uñeros</h3>
+                        <p class="text-xs text-slate-600">Tratamiento profesional y sin dolor para uñas encarnadas.</p>
+                    </div>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="flex items-center gap-3 p-3 bg-sky-50/50 rounded-2xl border border-sky-100 shadow-sm hover:border-sky-300 transition">
+                    <img src="https://i.postimg.cc/SR47tkq2/piecitos3.jpg" alt="Hongos" class="w-14 h-14 rounded-xl object-cover flex-shrink-0 border border-sky-200" onerror="this.src='https://placehold.co/150x150/e0f2fe/0284c7?text=👣'">
+                    <div>
+                        <h3 class="font-bold text-sky-900 text-sm">Onicomicosis</h3>
+                        <p class="text-xs text-slate-600">Diagnóstico y tratamiento avanzado para hongos en las uñas.</p>
+                    </div>
+                </div>
+
+                <!-- Servicio Quiropodia -->
+                <div class="flex items-center gap-3 p-3 bg-sky-50/50 rounded-2xl border border-sky-100 shadow-sm hover:border-sky-300 transition">
+                    <img src="https://i.postimg.cc/28HD75FM/quiropodia.jpg" alt="Quiropodia" class="w-14 h-14 rounded-xl object-cover flex-shrink-0 border border-sky-200" onerror="this.src='https://placehold.co/150x150/e0f2fe/0284c7?text=👣'">
+                    <div>
+                        <h3 class="font-bold text-sky-900 text-sm">Quiropodia</h3>
+                        <p class="text-xs text-slate-600">Cuidado integral y remoción de durezas y alteraciones ungueales.</p>
+                    </div>
+                </div>
+
+                <!-- Servicio Tratamiento Láser -->
+                <div class="flex items-center gap-3 p-3 bg-sky-50/50 rounded-2xl border border-sky-100 shadow-sm hover:border-sky-300 transition">
+                    <img src="https://i.postimg.cc/JztrBXJr/piecitos-laser.jpg" alt="Tratamiento Láser" class="w-14 h-14 rounded-xl object-cover flex-shrink-0 border border-sky-200" onerror="this.src='https://placehold.co/150x150/e0f2fe/0284c7?text=👣'">
+                    <div>
+                        <h3 class="font-bold text-sky-900 text-sm">Tratamiento Láser</h3>
+                        <p class="text-xs text-slate-600">Tecnología avanzada para el tratamiento indoloro y eficaz.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="closeModal('modalServicios')" class="mt-4 w-full py-3 bg-sky-100 text-sky-800 rounded-xl font-bold hover:bg-sky-200 transition text-sm">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modalHorario" class="modal fixed inset-0 bg-sky-950/30 backdrop-blur-sm z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-[2rem] p-6 shadow-2xl border border-sky-100">
+            <h2 class="text-xl font-bold mb-4 text-sky-900 flex items-center gap-2"><span>⏰</span> Horario de Atención</h2>
+            <div class="space-y-3 text-sm text-slate-600">
+                <div class="flex justify-between p-3 bg-sky-50 rounded-xl">
+                    <span class="font-semibold text-sky-900">Lunes a Viernes</span>
+                    <span class="text-sky-700">08:00 - 20:00 hs</span>
+                </div>
+                <div class="flex justify-between p-3 bg-sky-50 rounded-xl">
+                    <span class="font-semibold text-sky-900">Sábados</span>
+                    <span class="text-sky-700">09:00 - 13:00 hs</span>
+                </div>
+                <div class="flex justify-between p-3 bg-slate-50 rounded-xl text-slate-400">
+                    <span>Domingos y Feriados</span>
+                    <span>Cerrado</span>
+                </div>
+            </div>
+            <button onclick="closeModal('modalHorario')" class="mt-6 w-full py-3 bg-sky-100 text-sky-800 rounded-xl font-bold hover:bg-sky-200 transition">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modalUbicacion" class="modal fixed inset-0 bg-sky-950/30 backdrop-blur-sm z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-[2rem] p-6 shadow-2xl text-center border border-sky-100">
+            <h2 class="text-xl font-bold mb-2 text-[#2d3748] flex items-center justify-center gap-2"><span>📍</span> Ubicación</h2>
+            <p class="text-sm text-slate-600 mb-2 font-medium">Calle Mariscal Orbegoso 612, Sullana 20102</p>
+            <p class="text-xs text-slate-500 mb-4">Visítanos en nuestro centro especializado para el cuidado de tus pies.</p>
+            <button onclick="window.open('https://maps.google.com/?cid=1350069115559481043', '_blank')" class="w-full py-3 bg-[#0284c7] text-white rounded-xl font-bold shadow-md hover:bg-sky-700 transition mb-3">Abrir en Google Maps</button>
+            <button onclick="closeModal('modalUbicacion')" class="w-full py-3 bg-sky-100 text-sky-800 rounded-xl font-bold hover:bg-sky-200 transition">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modalRedes" class="modal fixed inset-0 bg-sky-950/35 backdrop-blur-sm z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-[2rem] p-6 shadow-2xl border border-sky-100">
+            <h2 class="text-xl font-bold mb-4 text-sky-900 flex items-center gap-2"><span>🌐</span> Redes Sociales</h2>
+            <div class="space-y-3">
+                <a href="https://instagram.com/cppiecitos" target="_blank" class="flex items-center gap-3 p-3 bg-pink-50 text-pink-700 rounded-2xl font-semibold hover:bg-pink-100 transition">
+                    <span class="text-xl">📸</span> @cppiecitos
+                </a>
+                <a href="https://www.facebook.com/search/top?q=Centro%20Podologico%20Piecitos" target="_blank" class="flex items-center gap-3 p-3 bg-blue-50 text-blue-700 rounded-2xl font-semibold hover:bg-blue-100 transition">
+                    <span class="text-xl">📘</span> Centro Podologico Piecitos
+                </a>
+                <a href="https://wa.me/51941963113" target="_blank" class="flex items-center gap-3 p-3 bg-emerald-50 text-emerald-700 rounded-2xl font-semibold hover:bg-emerald-100 transition">
+                    <span class="text-xl">💬</span> WhatsApp Directo
+                </a>
+            </div>
+            <button onclick="closeModal('modalRedes')" class="mt-6 w-full py-3 bg-sky-100 text-sky-800 rounded-xl font-bold hover:bg-sky-200 transition">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modalQR" class="modal fixed inset-0 bg-sky-950/30 backdrop-blur-sm z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-[2rem] p-6 shadow-2xl text-center border border-sky-100">
+            <h2 class="text-xl font-bold mb-2 text-sky-900">Guardar Contacto</h2>
+            <p class="text-xs text-slate-500 mb-4">Escanea el código QR con tu cámara o descarga la tarjeta digital.</p>
+            
+            <div class="w-40 h-40 bg-sky-50 mx-auto rounded-2xl border-4 border-sky-200 flex items-center justify-center mb-4 shadow-inner">
+                <span class="text-4xl">📱</span>
+            </div>
+
+            <button onclick="alert('Descargando contacto vCard...')" class="w-full py-3 bg-sky-600 text-white rounded-xl font-bold shadow-md hover:bg-sky-700 transition mb-3">Descargar Archivo .vcf</button>
+            <button onclick="closeModal('modalQR')" class="w-full py-3 bg-sky-100 text-sky-800 rounded-xl font-bold hover:bg-sky-200 transition">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modalPWA" class="modal fixed inset-0 bg-sky-950/30 backdrop-blur-sm z-50 items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-[2rem] p-6 shadow-2xl border border-sky-100">
+            <h2 class="text-xl font-bold mb-3 text-sky-900 flex items-center gap-2"><span>📲</span> Instalar Tarjeta</h2>
+            <p class="text-sm text-slate-600 mb-4">Lleva esta tarjeta siempre contigo en tu celular instalándola como aplicación:</p>
+            
+            <div class="space-y-3 text-xs text-slate-600">
+                <div class="p-3 bg-sky-50 rounded-xl border border-sky-100">
+                    <span class="font-bold block text-sky-900 mb-1">🍏 En iPhone / iOS:</span>
+                    Toca el botón <strong>Compartir</strong> en tu navegador y selecciona <strong>"Agregar a Inicio"</strong>.
+                </div>
+                <div class="p-3 bg-sky-50 rounded-xl border border-sky-100">
+                    <span class="font-bold block text-sky-900 mb-1">🤖 En Android / Chrome:</span>
+                    Toca el menú de los 3 puntos y selecciona <strong>"Instalar aplicación"</strong> o <strong>"Agregar a la pantalla principal"</strong>.
+                </div>
+            </div>
+
+            <button onclick="closeModal('modalPWA')" class="mt-6 w-full py-3 bg-sky-100 text-sky-800 rounded-xl font-bold hover:bg-sky-200 transition">Entendido</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) { 
+            document.getElementById(id).classList.add('active'); 
+        }
+        function closeModal(id) { 
+            document.getElementById(id).classList.remove('active'); 
+        }
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
